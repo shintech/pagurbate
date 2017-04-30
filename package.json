@@ -1,6 +1,6 @@
 {
   "name": "pagurbate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "client side pagination",
   "main": "build/static/bundle.js",
   "repository": "https://github.com/shintech/pagurbate.git",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel -D -d build/ app/",
-    "prepublish": "standard && npm run build && webpack"
+    "prepublish": "standard && webpack -p"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
