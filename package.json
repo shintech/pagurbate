@@ -1,6 +1,6 @@
 {
   "name": "pagurbate",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "client side pagination",
   "main": "build/static/bundle.js",
   "repository": "https://github.com/shintech/pagurbate.git",

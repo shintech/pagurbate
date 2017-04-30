@@ -1,6 +1,7 @@
 ### Synopsis
 
-Client side pagination
+Client side pagination. 
+Creates Marionette View with footer and pagination controls.
 
 ### Installation
 
@@ -9,3 +10,14 @@ Client side pagination
 ### Usage
 
     import pagurbate from 'pagurbate'
+    
+    const pageData = {
+      pageSize: 10,
+      total: 30, 
+      pageCount: 3,
+      currentPage: 2
+    }
+    
+    const pagurbate = new Pagurbate({ pageData: pageData })
+    
+    view.showChildView('body', pagurbate)
