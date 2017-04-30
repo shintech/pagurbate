@@ -1,0 +1,36 @@
+{
+  "name": "pagurbate",
+  "version": "0.0.1",
+  "description": "client side pagination",
+  "main": "build/static/bundle.js",
+  "repository": "https://github.com/shintech/pagurbate.git",
+  "author": "Michael Prather",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel -D -d build/ app/",
+    "prepublish": "standard && npm run build && webpack"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-preset-latest": "^6.24.0",
+    "standard": "^10.0.1",
+    "webpack": "^2.4.1"
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "beforeEach",
+      "afterEach",
+      "before",
+      "after",
+      "Backbone",
+      "_",
+      "$"
+    ]
+  },
+  "engines": {
+    "node": ">=6"
+  }
+}
