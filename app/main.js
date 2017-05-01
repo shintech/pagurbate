@@ -6,7 +6,7 @@ const Pagurbate = Backbone.Marionette.View.extend({
       el: '.main'
     }
   },
-  
+
   template: _.template('<div class="main"></div>'),
 
   initialize: function (options) {
@@ -17,7 +17,7 @@ const Pagurbate = Backbone.Marionette.View.extend({
 
     this.pageData = options.pageData
   },
-  
+
   onRender: function () {
     const paginationView = new PaginationView({ pageData: this.pageData, template: this.paginationTemplate })
 

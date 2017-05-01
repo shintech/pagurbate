@@ -1,19 +1,13 @@
 {
   "name": "pagurbate",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "client side pagination",
-  "main": "build/main.js",
+  "main": "app/main.js",
   "repository": "https://github.com/shintech/pagurbate.git",
   "author": "Michael Prather",
   "license": "MIT",
   "scripts": {
     "prepublish": "standard"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-loader": "^7.0.0",
-    "babel-preset-es2015-node6": "^0.4.0",
-    "babel-preset-latest": "^6.24.0",
   },
   "standard": {
     "globals": [
@@ -30,5 +24,8 @@
   },
   "engines": {
     "node": ">=6"
+  },
+  "dependencies": {
+    "standard": "^10.0.2"
   }
 }
