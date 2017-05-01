@@ -7,6 +7,8 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
   className: 'pagination',
   childView: PaginationItemView,
   initialize: function (options) {
+    this.paginationTemplate = options.template
+    
     const { currentPage, pageCount } = options.pageData
 
     this.collection = new PaginationCollection()
@@ -20,7 +22,7 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
 
       this.collection.add(paginationItem)
     }
-  }
+  },
 
 })
 

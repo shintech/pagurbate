@@ -1,6 +1,7 @@
 ### Synopsis
 
 Client side pagination. 
+
 Creates Marionette View with footer and pagination controls.
 
 ### Installation

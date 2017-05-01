@@ -1,11 +1,7 @@
 const PageNavigationItemView = Backbone.Marionette.View.extend({
   tagName: 'li',
 
-  template: require('../templates/pagination-item-view-template.html'),
-  initialize: function (options) {
-    this.options = options
-  },
-
+  template: _.template(' <a href="#page/<%- page  %>"><%- page %></a>'),
   onRender: function () {
     if (this.model.get('active')) {
       this.el.className = 'active'
