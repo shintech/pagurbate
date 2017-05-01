@@ -1,4 +1,4 @@
-import PaginationView from './views/PaginationView'
+import PaginationView from './app/views/PaginationView'
 
 const Pagurbate = Backbone.Marionette.View.extend({
   regions: {
