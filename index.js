@@ -3,11 +3,11 @@ import PaginationView from './app/views/PaginationView'
 const Pagurbate = Backbone.Marionette.View.extend({
   regions: {
     body: {
-      el: '.main'
+      el: '.pagurbate'
     }
   },
 
-  template: _.template('<div class="main"></div>'),
+  template: _.template('<div class="pagurbate"></div>'),
 
   initialize: function (options) {
     const {currentPage, pageCount} = options.pageData
@@ -19,20 +19,9 @@ const Pagurbate = Backbone.Marionette.View.extend({
   },
 
   onRender: function () {
-    const paginationView = new PaginationView({ pageData: this.pageData, template: this.paginationTemplate })
-
-    const next = `<li><a href="#page/${this.currentPage + 1}">Next</a></li>`
-    const prev = `<li><a href="#page/${this.currentPage - 1}">Prev</a></li>`
+    const paginationView = new PaginationView({ pageData: this.pageData })
 
     this.showChildView('body', paginationView)
-
-    if (this.currentPage > 1) {
-      $(paginationView.el).prepend(prev)
-    }
-
-    if (this.currentPage < this.pageCount) {
-      $(paginationView.el).append(next)
-    }
   }
 })
 
