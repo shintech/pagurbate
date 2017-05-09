@@ -1,7 +1,7 @@
 import PaginationItem from '../models/PaginationItem'
 
 const PageNavigationCollection = Backbone.Collection.extend({
-  model: PaginationItem,
+  model: PaginationItem
 })
 
 export default PageNavigationCollection
