@@ -1,8 +1,8 @@
 {
   "name": "pagurbate",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "client side pagination",
-  "main": "./index.js",
+  "main": "index.js",
   "repository": "https://github.com/shintech/pagurbate.git",
   "author": "Michael Prather",
   "license": "MIT",
