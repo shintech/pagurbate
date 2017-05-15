@@ -10,11 +10,6 @@ const Pagurbate = Backbone.Marionette.View.extend({
   template: _.template('<div class="pagurbate"></div>'),
 
   initialize: function (options) {
-    const {currentPage, pageCount} = options.pageData
-
-    this.currentPage = parseInt(currentPage)
-    this.pageCount = parseInt(pageCount)
-
     this.pageData = options.pageData
   },
 

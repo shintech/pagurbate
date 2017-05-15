@@ -7,8 +7,9 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
   className: 'pagination',
   childView: PaginationItemView,
   initialize: function (options) {
-    const { currentPage, pageCount } = options.pageData
-
+    const currentPage = options.pageData['currentPage']
+    const pageCount = options.pageData['pageCount']
+    
     this.collection = new PaginationCollection()
 
     const nextItem = new PaginationItem({ page: parseInt(currentPage) + 1, active: false, text: 'Next' })
