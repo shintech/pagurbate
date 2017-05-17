@@ -12,7 +12,7 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
     const pageCount = Math.ceil(options.pageData['pageCount'])
     const currentPageFloor = Math.floor10(currentPage, 1)
 
-    let paginationItem
+    var paginationItem
 
     this.collection = new PaginationCollection()
 
