@@ -1,34 +1,36 @@
 import PaginationItem from '../models/PaginationItem'
 import PaginationCollection from '../collections/PaginationCollection'
 import PaginationItemView from './PaginationItemView'
+import '../public/js/MathConfig.js'
 
 const PaginationView = Backbone.Marionette.CollectionView.extend({
   tagName: 'ul',
   className: 'pagination',
   childView: PaginationItemView,
   initialize: function (options) {
-    const currentPage = options.pageData['currentPage']
-    const pageCount = options.pageData['pageCount']
+    const currentPage = parseInt(options.pageData['currentPage'])
+    const pageCount = Math.ceil(options.pageData['pageCount'])
+    const currentPageFloor = Math.floor10(currentPage, 1)
+
+    let paginationItem
 
     this.collection = new PaginationCollection()
 
-    const nextItem = new PaginationItem({ page: parseInt(currentPage) + 1, active: false, text: 'Next' })
-    const prevItem = new PaginationItem({ page: parseInt(currentPage) - 1, active: false, text: 'Prev' })
+    const nextItem = new PaginationItem({ page: currentPage + 1, active: false, text: 'Next' })
+    const prevItem = new PaginationItem({ page: currentPage - 1, active: false, text: 'Prev' })
 
     if (currentPage > 1) {
       this.collection.add(prevItem)
     }
 
-    for (var i = currentPage - 5; i < currentPage + 5; i++) {
-      if ((i + 1) >= 1 && i < pageCount) {
-        const paginationItem = new PaginationItem({ page: i + 1, active: false, text: i + 1 })
-
-        if ((i + 1) === parseInt(currentPage)) {
+    for (var i = currentPageFloor; i < currentPageFloor + 10; i++) {
+      if (i > 0 && i <= pageCount) {
+        paginationItem = new PaginationItem({ page: i, active: false, text: i })
+        if (i === currentPage) {
           paginationItem.set('active', true)
         }
-
-        this.collection.add(paginationItem)
       }
+      this.collection.add(paginationItem)
     }
 
     if (currentPage < pageCount) {
