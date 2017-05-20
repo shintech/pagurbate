@@ -16,8 +16,20 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
 
     this.collection = new PaginationCollection()
 
+    const firstPage = new PaginationItem({ page: 1, active: false, text: 'First Page' })
+    const lastPage = new PaginationItem({ page: pageCount, active: false, text: 'Last Page' })
+    const next10 = new PaginationItem({ page: currentPageFloor + 10, active: false, text: 'Next 10...' })
+    const prev10 = new PaginationItem({ page: findPrevious10(currentPageFloor), active: false, text: 'Prev 10...' })
     const nextItem = new PaginationItem({ page: currentPage + 1, active: false, text: 'Next' })
     const prevItem = new PaginationItem({ page: currentPage - 1, active: false, text: 'Prev' })
+
+    if (currentPage !== 1) {
+      this.collection.add(firstPage)
+    }
+
+    if ((currentPageFloor - 10) >= 0) {
+      this.collection.add(prev10)
+    }
 
     if (currentPage > 1) {
       this.collection.add(prevItem)
@@ -36,7 +48,23 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
     if (currentPage < pageCount) {
       this.collection.add(nextItem)
     }
+
+    if ((currentPageFloor + 10) < pageCount) {
+      this.collection.add(next10)
+    }
+
+    if (currentPage !== pageCount) {
+      this.collection.add(lastPage)
+    }
   }
 })
+
+function findPrevious10 (currentPageFloor) {
+  if ((currentPageFloor - 10) === 0) {
+    return 1
+  } else {
+    return currentPageFloor - 10
+  }
+}
 
 export default PaginationView
