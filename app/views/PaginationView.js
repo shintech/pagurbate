@@ -5,8 +5,11 @@ import '../public/js/MathConfig.js'
 
 const PaginationView = Backbone.Marionette.CollectionView.extend({
   tagName: 'ul',
+
   className: 'pagination',
+
   childView: PaginationItemView,
+
   initialize: function (options) {
     const currentPage = parseInt(options.pageData['currentPage'])
     const pageCount = Math.ceil(options.pageData['pageCount'])
@@ -23,39 +26,56 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
     const nextItem = new PaginationItem({ page: currentPage + 1, active: false, text: 'Next' })
     const prevItem = new PaginationItem({ page: currentPage - 1, active: false, text: 'Prev' })
 
-    if (currentPage !== 1) {
-      this.collection.add(firstPage)
+    if (currentPage <= 1) {
+      firstPage.set('active', 'disabled')
     }
 
-    if ((currentPageFloor - 10) >= 0) {
-      this.collection.add(prev10)
+    if ((currentPageFloor - 10) <= 0) {
+      prev10.set('active', 'disabled')
     }
 
-    if (currentPage > 1) {
-      this.collection.add(prevItem)
+    if (currentPage <= 1) {
+      prevItem.set('active', 'disabled')
     }
+
+    this.collection.add(firstPage)
+    this.collection.add(prev10)
+    this.collection.add(prev10)
+    this.collection.add(prevItem)
 
     for (var i = currentPageFloor; i < currentPageFloor + 10; i++) {
       if (i > 0 && i <= pageCount) {
         paginationItem = new PaginationItem({ page: i, active: false, text: i })
         if (i === currentPage) {
-          paginationItem.set('active', true)
+          paginationItem.set('active', 'active')
         }
       }
       this.collection.add(paginationItem)
     }
 
-    if (currentPage < pageCount) {
-      this.collection.add(nextItem)
+    this.collection.add(nextItem)
+    this.collection.add(next10)
+    this.collection.add(lastPage)
+
+    if (currentPage >= pageCount) {
+      nextItem.set('active', 'disabled')
     }
 
-    if ((currentPageFloor + 10) < pageCount) {
-      this.collection.add(next10)
+    if ((currentPageFloor + 10) >= pageCount) {
+      next10.set('active', 'disabled')
     }
 
-    if (currentPage !== pageCount) {
-      this.collection.add(lastPage)
+    if (currentPage >= pageCount) {
+      lastPage.set('active', 'disabled')
     }
+  },
+
+  onRender: function () {
+    $(function () {
+      $('ul li.disabled a').click(function () {
+        return false
+      })
+    })
   }
 })
 
