@@ -44,13 +44,14 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
     this.collection.add(prev10)
     this.collection.add(prevItem)
 
-    for (var i = currentPageFloor; i < currentPageFloor + 10; i++) {
+    for (var i = currentPageFloor; i < currentPageFloor + 11; i++) {
       if (i > 0 && i <= pageCount) {
         paginationItem = new PaginationItem({ page: i, active: false, text: i })
         if (i === currentPage) {
           paginationItem.set('active', 'active')
         }
       }
+
       this.collection.add(paginationItem)
     }
 
