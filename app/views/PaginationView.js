@@ -14,6 +14,7 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
     const currentPage = parseInt(options.pageData['currentPage'])
     const pageCount = Math.ceil(options.pageData['pageCount'])
     const currentPageFloor = Math.floor10(currentPage, 1)
+    const pageSize = options.pageData['pageSize']
 
     var paginationItem
 
@@ -21,8 +22,8 @@ const PaginationView = Backbone.Marionette.CollectionView.extend({
 
     const firstPage = new PaginationItem({ page: 1, active: false, text: 'First Page' })
     const lastPage = new PaginationItem({ page: pageCount, active: false, text: 'Last Page' })
-    const next10 = new PaginationItem({ page: currentPageFloor + 10, active: false, text: 'Next 10...' })
-    const prev10 = new PaginationItem({ page: findPrevious10(currentPageFloor), active: false, text: 'Prev 10...' })
+    const next10 = new PaginationItem({ page: currentPageFloor + 10, active: false, text: 'Next ' + pageSize + '...' })
+    const prev10 = new PaginationItem({ page: findPrevious10(currentPageFloor), active: false, text: 'Prev ' + pageSize + '...' })
     const nextItem = new PaginationItem({ page: currentPage + 1, active: false, text: 'Next' })
     const prevItem = new PaginationItem({ page: currentPage - 1, active: false, text: 'Prev' })
 
